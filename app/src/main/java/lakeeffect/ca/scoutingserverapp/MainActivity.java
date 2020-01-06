@@ -957,40 +957,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openScheduleViewer() {
-        //add to count
-        SharedPreferences goodbyePrefs = getSharedPreferences("42", MODE_PRIVATE);
-        int goodbyeCount = goodbyePrefs.getInt("soLong", 0);
-        SharedPreferences.Editor goodByeEditor = goodbyePrefs.edit();
-        goodByeEditor.putInt("soLong", goodbyeCount + 1);
-        goodByeEditor.apply();
-
-        if (goodbyeCount > 10 && Math.random() > 0.8) {
-
-            String lastTime = "";
-            int timesShown = goodbyePrefs.getInt("timesShown", 0);
-            if (timesShown  == 1) {
-                lastTime = "This is the last time this message will appear, I promise. ";
-            } else if (timesShown > 1) {
-                SharedPreferences.Editor goodByeEditor1 = goodbyePrefs.edit();
-                goodByeEditor1.putInt("timesShown", timesShown + 1);
-                goodByeEditor1.apply();
-                return;
-            }
-
-            //create the dialog box
-            new AlertDialog.Builder(MainActivity.this)
-                    .setTitle("You seem to love this feature!")
-                    .setMessage(lastTime + "You've checked the schedule " + goodbyeCount + " times." +
-                            "\n\nYou must love this feature. Like almost everything, this was written by the god aJaYdrIvE himself." +
-                            "\n\nI may have hidden some more easter eggs." +
-                            "\n\n- Ajay Ramachandran, good luck")
-                    .show();
-
-            SharedPreferences.Editor goodByeEditor1 = goodbyePrefs.edit();
-            goodByeEditor1.putInt("timesShown", timesShown + 1);
-            goodByeEditor1.apply();
-        }
-
         final ScrollView fullScrollView = new ScrollView(this);
 
         final LinearLayout scheduleViewer = (LinearLayout) getLayoutInflater().inflate(R.layout.schedule_viewer, null);
